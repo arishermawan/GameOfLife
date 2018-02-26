@@ -29,17 +29,18 @@ public class Universe {
 
     public int countNeighbours(int height, int width){
         int neighbours = 0;
-        if (grid[height][width + 1] == 1) neighbours += 1;
-        if (grid[height][width - 1] == 1) neighbours += 1;
+        if (height > 0) {
+            if (grid[height][width + 1] == 1) neighbours += 1;
+            if (grid[height][width - 1] == 1) neighbours += 1;
 
-        if (grid[height-1][width - 1] == 1) neighbours += 1;
-        if (grid[height-1][width] == 1) neighbours += 1;
-        if (grid[height-1][width + 1] == 1) neighbours += 1;
+            if (grid[height - 1][width - 1] == 1) neighbours += 1;
+            if (grid[height - 1][width] == 1) neighbours += 1;
+            if (grid[height - 1][width + 1] == 1) neighbours += 1;
 
-        if (grid[height+1][width - 1] == 1) neighbours += 1;
-        if (grid[height+1][width] == 1) neighbours += 1;
-        if (grid[height+1][width + 1] == 1) neighbours += 1;
-
+            if (grid[height + 1][width - 1] == 1) neighbours += 1;
+            if (grid[height + 1][width] == 1) neighbours += 1;
+            if (grid[height + 1][width + 1] == 1) neighbours += 1;
+        }
         return neighbours;
     }
 
