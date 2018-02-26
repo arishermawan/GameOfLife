@@ -29,7 +29,7 @@ public class Universe {
 
     public int countNeighbours(int height, int width){
         int neighbours = 0;
-        if (height > 0) {
+        if (height > 0 && height < grid.length - 1) {
             if (grid[height][width + 1] == 1) neighbours += 1;
             if (grid[height][width - 1] == 1) neighbours += 1;
 

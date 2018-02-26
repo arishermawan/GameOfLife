@@ -62,4 +62,11 @@ public class UniverseTest {
         world.blinker();
         assertThat(world.countNeighbours(0,2), equalTo(0));
     }
+
+    @Test
+    public void bottomMarginGridShouldNotBeCountNeighbour(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        assertThat(world.countNeighbours(4,2), equalTo(0));
+    }
 }
