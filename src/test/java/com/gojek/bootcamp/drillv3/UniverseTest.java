@@ -42,4 +42,11 @@ public class UniverseTest {
         assertThat(world.countNeighbours(2,2), equalTo(2));
     }
 
+    @Test
+    public void cellInGridShouldCountItsNeighboursInTopRow(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        assertThat(world.countNeighbours(3,2), equalTo(3));
+    }
+
 }
