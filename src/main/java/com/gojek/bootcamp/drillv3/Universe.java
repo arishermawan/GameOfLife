@@ -46,10 +46,10 @@ public class Universe {
 
     public int rules(int cell, int neighbours) {
         int newCell = 0;
-        if (neighbours >= 2 && neighbours <= 3) {
-            newCell = 1;
-        } else {
-            newCell = 0;
+        if (cell == 1){
+            if (neighbours >= 2 && neighbours <=3) newCell = 1;
+        }else{
+            if(neighbours == 3) newCell = 1;
         }
         return newCell;
     }
@@ -65,5 +65,16 @@ public class Universe {
         this.grid[3][3] = 1;
         this.grid[2][2] = 1;
         this.grid[2][3] = 1;
+    }
+
+    public static void main(String[] args) {
+        Universe un = new Universe(5, 5);
+        System.out.println(un.viewGrid());
+        System.out.println();
+        un.blinker();
+        un.block();
+        System.out.println(un.viewGrid());
+        System.out.println(un.countNeighbours(3,1));
+
     }
 }

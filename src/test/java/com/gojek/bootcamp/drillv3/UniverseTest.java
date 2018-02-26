@@ -100,8 +100,8 @@ public class UniverseTest {
         world.blinker();
         int cell = 1;
         int neightbours = world.countNeighbours(2,2);
-        int outerCell = world.rules(cell, neightbours);
-        assertThat(outerCell, equalTo(1));
+        int newCell = world.rules(cell, neightbours);
+        assertThat(newCell, equalTo(1));
     }
 
     @Test
@@ -111,7 +111,18 @@ public class UniverseTest {
         world.blinker();
         int cell = 1;
         int neightbours = world.countNeighbours(2,2);
-        int outerCell = world.rules(cell, neightbours);
-        assertThat(outerCell, equalTo(0));
+        int newCell = world.rules(cell, neightbours);
+        assertThat(newCell, equalTo(0));
+    }
+
+    @Test
+    public void deadCellWithThreeNeighboursShouldBeAliveInNextGeneration(){
+        Universe world = new Universe(6,6);
+        world.block();
+        world.blinker();
+        int cell = 0;
+        int neightbours = world.countNeighbours(3,1);
+        int newCell = world.rules(cell, neightbours);
+        assertThat(newCell, equalTo(1));
     }
 }
