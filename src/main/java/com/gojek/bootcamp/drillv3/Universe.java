@@ -45,7 +45,13 @@ public class Universe {
     }
 
     public int rules(int cell, int neighbours) {
-       return 0;
+        int newCell = 0;
+        if (neighbours < 2) {
+            newCell = 0;
+        } else {
+            newCell = 1;
+        }
+        return newCell;
     }
 
     public void blinker() {

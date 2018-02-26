@@ -94,4 +94,14 @@ public class UniverseTest {
         int newCell = world.rules(cell, neightbours);
         assertThat(newCell, equalTo(0));
     }
+
+    @Test
+    public void aliveCellWithBetweenTwoAndThreeNeighboursShouldBeAliveInNextGeneration(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        int cell = 1;
+        int neightbours = world.countNeighbours(2,2);
+        int outerCell = world.rules(cell, neightbours);
+        assertThat(outerCell, equalTo(1));
+    }
 }
