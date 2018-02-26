@@ -29,6 +29,20 @@ public class Universe {
         }
     }
 
+    public void printGrid(){
+        for (int i = 0; i < grid.length; i++){
+            System.out.print("|");
+            for(int j = 0; j< grid[i].length; j++){
+                if (grid[i][j] == 1 ){
+                    System.out.print("0");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("|");
+        }
+    }
+
     public int countNeighbours(int height, int width) {
         int neighbours = 0;
         if (height > 0 && height < grid.length - 1 && width > 0 && width < grid[height].length - 1) {
@@ -59,9 +73,31 @@ public class Universe {
     public void nextGeneration(){
         int height = grid.length;
         int width = grid[0].length;
-        Universe tempUniverse = new Universe(width,height);
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height ; j++) {
+
+        boolean cellReachMaxWidth = false;
+        int newWidth = width;
+        for (int i = 0; i < height; i++) {
+            if(grid[i][width-2] == 1 ) cellReachMaxWidth =true;
+        }
+
+        if(cellReachMaxWidth){
+            if (cellReachMaxWidth) newWidth = width +1;
+            Universe newWorld = new Universe(height, newWidth);
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    newWorld.grid[i][j] = grid[i][j];
+                }
+            }
+
+            this.grid = newWorld.grid;
+        }
+
+        height = grid.length;
+        width = grid[0].length;
+
+        Universe tempUniverse = new Universe(height, width);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 int neighbours = countNeighbours(i, j);
                 tempUniverse.grid[i][j] = rules(grid[i][j], neighbours);
             }
@@ -98,5 +134,13 @@ public class Universe {
         this.grid[3][3] = 1;
         this.grid[2][2] = 1;
         this.grid[2][3] = 1;
+    }
+
+    public void glider() {
+        grid[1][1] = 1;
+        grid[2][2] = 1;
+        grid[2][3] = 1;
+        grid[3][1] = 1;
+        grid[3][2] = 1;
     }
 }

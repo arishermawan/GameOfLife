@@ -138,7 +138,7 @@ public class UniverseTest {
         Universe world = new Universe(5,5);
         world.blinker();
         world.nextGeneration();
-        assertThat(world.viewGrid(), equalTo("00000\n00100\n00100\n00100\n00000\n"));
+        assertThat(world.viewGrid(), equalTo("000000\n001000\n001000\n001000\n000000\n"));
     }
 
     @Test
@@ -186,5 +186,14 @@ public class UniverseTest {
         Universe world1 = new Universe(5,5);
         Universe world2 = new Universe(5,5);
         assertThat(world1.hashCode(), is(equalTo((world2.hashCode()))));
+    }
+
+    @Test
+    public void GridShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        world.nextGeneration();
+        Universe newWorld = new Universe(5,6);
+        assertThat(world.equals(newWorld), is(equalTo(true)));
     }
 }
