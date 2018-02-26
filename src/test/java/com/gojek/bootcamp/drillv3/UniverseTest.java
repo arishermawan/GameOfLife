@@ -142,9 +142,15 @@ public class UniverseTest {
     }
 
     @Test
-    public void UniverseObjectWithSameSizeShoudEqual(){
+    public void UniverseObjectWithSameSizeShoudBeEqual(){
         Universe world1 = new Universe(5,5);
         Universe world2 = new Universe(5,5);
         assertThat(world1.equals(world2), equalTo(true));
+    }
+
+    @Test
+    public void NullWithUniverseObjectShoudNotBeEqual(){
+        Universe world1 = new Universe(5,5);
+        assertThat(world1.equals(null), equalTo(false));
     }
 }

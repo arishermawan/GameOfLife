@@ -76,6 +76,9 @@ public class Universe {
 
     @Override
     public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
         return true;
     }
 
