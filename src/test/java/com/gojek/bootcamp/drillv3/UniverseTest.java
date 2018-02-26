@@ -132,4 +132,12 @@ public class UniverseTest {
         int newCell = world.rules(cell, neightbours);
         assertThat(newCell, equalTo(1));
     }
+
+    @Test
+    public void blickerShouldBeRotate90DeegreWhenGeneration(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        world.nextGeneration();
+        assertThat(world.viewGrid(), equalTo("00000\n00100\n00100\n00100\n00000\n"));
+    }
 }

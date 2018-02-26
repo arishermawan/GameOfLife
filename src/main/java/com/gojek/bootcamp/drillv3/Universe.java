@@ -54,6 +54,25 @@ public class Universe {
         return newCell;
     }
 
+    public void nextGeneration(){
+        int height = grid.length;
+        int width = grid[0].length;
+        Universe tempUniverse = new Universe(width,height);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height ; j++) {
+                int neighbours = countNeighbours(i, j);
+                tempUniverse.grid[i][j] = rules(grid[i][j], neighbours);
+            }
+        }
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 1; j < height ; j++) {
+                grid[i][j] = tempUniverse.grid[i][j];
+            }
+        }
+
+    }
+
     public void blinker() {
         this.grid[2][1] = 1;
         this.grid[2][2] = 1;
@@ -65,16 +84,5 @@ public class Universe {
         this.grid[3][3] = 1;
         this.grid[2][2] = 1;
         this.grid[2][3] = 1;
-    }
-
-    public static void main(String[] args) {
-        Universe un = new Universe(5, 5);
-        System.out.println(un.viewGrid());
-        System.out.println();
-        un.blinker();
-        un.block();
-        System.out.println(un.viewGrid());
-        System.out.println(un.countNeighbours(3,1));
-
     }
 }
