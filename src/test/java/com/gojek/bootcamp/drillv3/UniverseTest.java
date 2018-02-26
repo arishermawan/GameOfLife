@@ -5,4 +5,9 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class UniverseTest {
+    @Test
+    public void gridShouldBeRetunString(){
+        Universe world = new Universe(3,3);
+        assertThat(world.viewGrid(), equalTo("000\n000\n000\n"));
+    }
 }
