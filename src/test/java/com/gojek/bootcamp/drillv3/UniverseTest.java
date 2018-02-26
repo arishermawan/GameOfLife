@@ -153,4 +153,10 @@ public class UniverseTest {
         Universe world1 = new Universe(5,5);
         assertThat(world1.equals(null), equalTo(false));
     }
+
+    @Test
+    public void StringWithUniverseObjectShoudNotBeEqual(){
+        Universe world1 = new Universe(5,5);
+        assertThat(world1.equals("Grid"), equalTo(false));
+    }
 }
