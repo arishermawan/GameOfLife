@@ -28,5 +28,11 @@ public class UniverseTest {
         Universe world = new Universe(2,2);
         assertThat(world.viewGrid(), equalTo("00\n00\n"));
     }
+    @Test
+    public void blinkerShouldBeSetGridWithBlinkerPattern(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        assertThat(world.viewGrid(), equalTo("00000\n00000\n01110\n00000\n00000\n"));
+    }
 
 }

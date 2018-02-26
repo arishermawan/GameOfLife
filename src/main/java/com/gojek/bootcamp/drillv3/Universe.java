@@ -26,4 +26,10 @@ public class Universe {
             }
         }
     }
+
+    public void blinker(){
+        this.grid[2][1] = 1;
+        this.grid[2][2] = 1;
+        this.grid[2][3] = 1;
+    }
 }
