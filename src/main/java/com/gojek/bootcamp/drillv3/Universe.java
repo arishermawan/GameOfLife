@@ -76,10 +76,9 @@ public class Universe {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null || this.getClass() != obj.getClass()){
-            return false;
-        }
-        return true;
+        if(obj == null || this.getClass() != obj.getClass()) return false;
+        Universe otherUniverse = (Universe) obj;
+        return this.grid.length == otherUniverse.grid.length;
     }
 
     @Override
