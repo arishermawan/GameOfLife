@@ -35,4 +35,11 @@ public class UniverseTest {
         assertThat(world.viewGrid(), equalTo("00000\n00000\n01110\n00000\n00000\n"));
     }
 
+    @Test
+    public void cellInGridShouldCountItsNeighbours(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        assertThat(world.countNeighbours(2,2), equalTo(2));
+    }
+
 }

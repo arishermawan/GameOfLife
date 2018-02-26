@@ -27,6 +27,14 @@ public class Universe {
         }
     }
 
+    public int countNeighbours(int height, int width){
+        int neighbours = 0;
+        if (grid[height][width + 1] == 1) neighbours += 1;
+        if (grid[height][width - 1] == 1) neighbours += 1;
+
+        return neighbours;
+    }
+
     public void blinker(){
         this.grid[2][1] = 1;
         this.grid[2][2] = 1;
