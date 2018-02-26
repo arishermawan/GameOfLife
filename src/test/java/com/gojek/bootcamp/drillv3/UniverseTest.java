@@ -17,4 +17,10 @@ public class UniverseTest {
         assertThat(world.viewGrid(), equalTo(""));
     }
 
+    @Test
+    public void anotherSizeOfGridShouldBeReturnString(){
+        Universe world = new Universe(2,2);
+        assertThat(world.viewGrid(), equalTo("00\n00\n"));
+    }
+
 }

@@ -9,7 +9,12 @@ public class Universe {
 
     public String viewGrid(){
         String gridString = "";
-        if(grid.length>0) gridString += "000\n000\n000\n";
+        for(int height = 0; height < grid.length; height++){
+            for (int width = 0; width< grid[height].length; width++){
+                gridString += "0";
+            }
+            gridString += "\n";
+        }
         return gridString;
     }
 }
