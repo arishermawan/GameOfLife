@@ -8,10 +8,10 @@ public class Universe {
         initializeGrid();
     }
 
-    public String viewGrid(){
+    public String viewGrid() {
         String gridString = "";
-        for(int height = 0; height < grid.length; height++){
-            for (int width = 0; width< grid[height].length; width++){
+        for (int height = 0; height < grid.length; height++) {
+            for (int width = 0; width < grid[height].length; width++) {
                 gridString += grid[height][width];
             }
             gridString += "\n";
@@ -19,17 +19,17 @@ public class Universe {
         return gridString;
     }
 
-    public void initializeGrid(){
-        for(int height = 0; height < grid.length; height++){
-            for (int width = 0; width< grid[height].length; width++){
+    public void initializeGrid() {
+        for (int height = 0; height < grid.length; height++) {
+            for (int width = 0; width < grid[height].length; width++) {
                 grid[height][width] = 0;
             }
         }
     }
 
-    public int countNeighbours(int height, int width){
+    public int countNeighbours(int height, int width) {
         int neighbours = 0;
-        if (height > 0 && height < grid.length - 1 && width > 0 && width < grid[height].length -1) {
+        if (height > 0 && height < grid.length - 1 && width > 0 && width < grid[height].length - 1) {
             if (grid[height][width + 1] == 1) neighbours += 1;
             if (grid[height][width - 1] == 1) neighbours += 1;
 
@@ -44,7 +44,11 @@ public class Universe {
         return neighbours;
     }
 
-    public void blinker(){
+    public int rules(int cell, int neighbours) {
+       return 0;
+    }
+
+    public void blinker() {
         this.grid[2][1] = 1;
         this.grid[2][2] = 1;
         this.grid[2][3] = 1;
