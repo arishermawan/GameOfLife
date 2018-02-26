@@ -23,4 +23,10 @@ public class UniverseTest {
         assertThat(world.viewGrid(), equalTo("00\n00\n"));
     }
 
+    @Test
+    public void GridShouldBeInitializedWithString(){
+        Universe world = new Universe(2,2);
+        assertThat(world.viewGrid(), equalTo("00\n00\n"));
+    }
+
 }
