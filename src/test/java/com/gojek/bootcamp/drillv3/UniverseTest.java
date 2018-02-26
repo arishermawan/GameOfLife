@@ -142,54 +142,54 @@ public class UniverseTest {
     }
 
     @Test
-    public void UniverseObjectWithSameSizeShoudBeEqual(){
+    public void universeObjectWithSameSizeShoudBeEqual(){
         Universe world1 = new Universe(5,5);
         Universe world2 = new Universe(5,5);
         assertThat(world1.equals(world2), equalTo(true));
     }
 
     @Test
-    public void NullWithUniverseObjectShoudNotBeEqual(){
+    public void nullWithUniverseObjectShoudNotBeEqual(){
         Universe world1 = new Universe(5,5);
         assertThat(world1.equals(null), equalTo(false));
     }
 
     @Test
-    public void StringWithUniverseObjectShoudNotBeEqual(){
+    public void ustringWithUniverseObjectShoudNotBeEqual(){
         Universe world1 = new Universe(5,5);
         assertThat(world1.equals("Grid"), equalTo(false));
     }
 
     @Test
-    public void UniverseObjectWithDifferentHeightSizeShoudNotBeEqual(){
+    public void universeObjectWithDifferentHeightSizeShoudNotBeEqual(){
         Universe world1 = new Universe(4,4);
         Universe world2 = new Universe(5,5);
         assertThat(world1.equals(world2), equalTo(false));
     }
 
     @Test
-    public void UniverseObjectWithDifferentWidthSizeShoudNotBeEqual(){
+    public void universeObjectWithDifferentWidthSizeShoudNotBeEqual(){
         Universe world1 = new Universe(5,4);
         Universe world2 = new Universe(5,5);
         assertThat(world1.equals(world2), equalTo(false));
     }
 
     @Test
-    public void UniverseObjectWithDifferentSizeShoudHaveDifferentHashcode(){
+    public void universeObjectWithDifferentSizeShoudHaveDifferentHashcode(){
         Universe world1 = new Universe(5,4);
         Universe world2 = new Universe(5,5);
         assertThat(world1.hashCode(), not(equalTo((world2.hashCode()))));
     }
 
     @Test
-    public void UniverseObjectWithSameSizeShoudHaveSameHashcode(){
+    public void universeObjectWithSameSizeShoudHaveSameHashcode(){
         Universe world1 = new Universe(5,5);
         Universe world2 = new Universe(5,5);
         assertThat(world1.hashCode(), is(equalTo((world2.hashCode()))));
     }
 
     @Test
-    public void GridWidthShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
+    public void gridWidthShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
         Universe world = new Universe(5,5);
         world.blinker();
         world.nextGeneration();
