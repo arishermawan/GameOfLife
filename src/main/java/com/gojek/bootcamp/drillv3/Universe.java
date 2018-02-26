@@ -1,5 +1,7 @@
 package com.gojek.bootcamp.drillv3;
-
+/*
+ This class represent generation of cell in game of life
+ */
 public class Universe {
     private int[][] grid;
 
