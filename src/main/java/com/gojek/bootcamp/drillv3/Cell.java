@@ -4,14 +4,22 @@ package com.gojek.bootcamp.drillv3;
  */
 
 public class Cell {
-    int status;
+    private int status;
 
     public Cell() {
         this.status = 0;
     }
 
     public boolean isAlive() {
-        return false;
+        if(status == 1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void reviveCell(){
+        this.status = 1;
     }
 
 }

@@ -13,4 +13,11 @@ public class CellTest {
         assertThat(cell.isAlive(), is(equalTo(false)));
     }
 
+    @Test
+    public void cellShouldReturnStatusWhenAlive(){
+        Cell cell = new Cell();
+        cell.reviveCell();
+        assertThat(cell.isAlive(), is(equalTo(true)));
+    }
+
 }
