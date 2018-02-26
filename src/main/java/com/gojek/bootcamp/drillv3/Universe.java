@@ -36,6 +36,10 @@ public class Universe {
         if (grid[height-1][width] == 1) neighbours += 1;
         if (grid[height-1][width + 1] == 1) neighbours += 1;
 
+        if (grid[height+1][width - 1] == 1) neighbours += 1;
+        if (grid[height+1][width] == 1) neighbours += 1;
+        if (grid[height+1][width + 1] == 1) neighbours += 1;
+
         return neighbours;
     }
 
