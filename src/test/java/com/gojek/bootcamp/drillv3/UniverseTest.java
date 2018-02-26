@@ -10,4 +10,11 @@ public class UniverseTest {
         Universe world = new Universe(3,3);
         assertThat(world.viewGrid(), equalTo("000\n000\n000\n"));
     }
+
+    @Test
+    public void zeroGridShouldBeReturnEmptyString(){
+        Universe world = new Universe(0,0);
+        assertThat(world.viewGrid(), equalTo(""));
+    }
+
 }

@@ -8,7 +8,8 @@ public class Universe {
     }
 
     public String viewGrid(){
-        String gridString ="000\n000\n000\n";
+        String gridString = "";
+        if(grid.length>0) gridString += "000\n000\n000\n";
         return gridString;
     }
 }
