@@ -78,12 +78,12 @@ public class Universe {
     public boolean equals(Object obj) {
         if(obj == null || this.getClass() != obj.getClass()) return false;
         Universe otherUniverse = (Universe) obj;
-        return this.grid.length == otherUniverse.grid.length;
+        return this.grid.length == otherUniverse.grid.length && this.grid[0].length == otherUniverse.grid[0].length;
     }
 
     @Override
     public int hashCode() {
-        return grid.length;
+        return grid.length * grid[0].length;
     }
 
     public void blinker() {
