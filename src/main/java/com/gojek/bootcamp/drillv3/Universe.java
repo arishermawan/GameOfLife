@@ -70,37 +70,50 @@ public class Universe {
         return newCell;
     }
 
+    public boolean cellReachMaxWidth(){
+        int height = grid.length;
+        int width = grid[0].length;
+        boolean cellAlmostReachMaxWidth = false;
+        for (int i = 0; i < height; i++) {
+            if (grid[i][width - 2] == 1) cellAlmostReachMaxWidth = true;
+        }
+        return  cellAlmostReachMaxWidth;
+    }
+
+    public boolean cellReachMaxHeight(){
+        int height = grid.length;
+        int width = grid[0].length;
+        boolean cellAlmostReachMaxHeight = false;
+        for (int i = 0; i < width; i++) {
+            if (grid[height - 2][i] == 1) cellAlmostReachMaxHeight = true;
+        }
+        return cellAlmostReachMaxHeight;
+    }
+
+    public void evolveGrid(int newHeight, int newWidth){
+        int height = grid.length;
+        int width = grid[0].length;
+        Universe newWorld = new Universe(newHeight, newWidth);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                newWorld.grid[i][j] = grid[i][j];
+            }
+        }
+        this.grid = newWorld.grid;
+    }
+
+
     public void nextGeneration() {
         int height = grid.length;
         int width = grid[0].length;
-
-        boolean cellReachMaxWidth = false;
-        boolean cellReachMaxHeight = false;
         int newWidth = width;
-        int newHeigth = height;
-        for (int i = 0; i < height; i++) {
-            if (grid[i][width - 2] == 1) cellReachMaxWidth = true;
+        int newHeight = height;
+
+        if (cellReachMaxWidth() || cellReachMaxHeight()) {
+            if (cellReachMaxHeight()) newHeight = height + 1;
+            if (cellReachMaxWidth()) newWidth = width + 1;
+            evolveGrid(newHeight, newWidth);
         }
-
-        for (int i = 0; i < width; i++) {
-            if (grid[height - 2][i] == 1) cellReachMaxHeight = true;
-        }
-
-        if (cellReachMaxWidth || cellReachMaxHeight) {
-            if (cellReachMaxHeight) newHeigth = height + 1;
-            if (cellReachMaxWidth) newWidth = width + 1;
-            Universe newWorld = new Universe(newHeigth, newWidth);
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    newWorld.grid[i][j] = grid[i][j];
-                }
-            }
-
-            this.grid = newWorld.grid;
-        }
-
-        height = grid.length;
-        width = grid[0].length;
 
         Universe tempUniverse = new Universe(height, width);
         for (int i = 0; i < height; i++) {
