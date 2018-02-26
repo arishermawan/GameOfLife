@@ -38,4 +38,13 @@ public class CellTest {
         assertThat(cell.isAlive(), equalTo(true));
     }
 
+    @Test
+    public void aliveCellGreaterThanThreeNeighboursShouldBeDeadInNextGeneration(){
+        Cell cell = new Cell();
+        cell.reviveCell();
+        int neightbours = 4;
+        cell.evolve(neightbours);
+        assertThat(cell.isAlive(), equalTo(false));
+    }
+
 }
