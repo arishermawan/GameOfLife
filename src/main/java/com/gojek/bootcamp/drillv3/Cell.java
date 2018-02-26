@@ -29,6 +29,8 @@ public class Cell {
             }else{
                 this.status = 0;
             }
+        }else{
+            if (neighbours == 3) this.status = 1 ;
         }
 
     }

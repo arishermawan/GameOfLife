@@ -47,4 +47,13 @@ public class CellTest {
         assertThat(cell.isAlive(), equalTo(false));
     }
 
+    @Test
+    public void deadCellWithThreeNeighboursShouldBeAliveInNextGeneration(){
+        Cell cell = new Cell();
+        int neightbours = 3;
+        cell.evolve(neightbours);
+        assertThat(cell.isAlive(), equalTo(true));
+        assertThat(cell.isAlive(), equalTo(true));
+    }
+
 }
