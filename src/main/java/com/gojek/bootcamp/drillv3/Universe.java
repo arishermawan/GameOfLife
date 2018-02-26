@@ -46,16 +46,23 @@ public class Universe {
 
     public int rules(int cell, int neighbours) {
         int newCell = 0;
-        if (neighbours < 2) {
-            newCell = 0;
-        } else {
+        if (neighbours >= 2 && neighbours <= 3) {
             newCell = 1;
+        } else {
+            newCell = 0;
         }
         return newCell;
     }
 
     public void blinker() {
         this.grid[2][1] = 1;
+        this.grid[2][2] = 1;
+        this.grid[2][3] = 1;
+    }
+
+    public void block() {
+        this.grid[3][2] = 1;
+        this.grid[3][3] = 1;
         this.grid[2][2] = 1;
         this.grid[2][3] = 1;
     }

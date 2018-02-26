@@ -84,7 +84,6 @@ public class UniverseTest {
         assertThat(world.countNeighbours(2,4), equalTo(0));
     }
 
-
     @Test
     public void aliveCellWithLessThanTwoNeighboursShouldBeDeadInNextGeneration(){
         Universe world = new Universe(5,5);
@@ -103,5 +102,16 @@ public class UniverseTest {
         int neightbours = world.countNeighbours(2,2);
         int outerCell = world.rules(cell, neightbours);
         assertThat(outerCell, equalTo(1));
+    }
+
+    @Test
+    public void aliveCellGreaterThanThreeNeighboursShouldBeDeadInNextGeneration(){
+        Universe world = new Universe(5,5);
+        world.block();
+        world.blinker();
+        int cell = 1;
+        int neightbours = world.countNeighbours(2,2);
+        int outerCell = world.rules(cell, neightbours);
+        assertThat(outerCell, equalTo(0));
     }
 }
