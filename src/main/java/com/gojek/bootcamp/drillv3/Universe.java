@@ -68,11 +68,20 @@ public class Universe {
         }
 
         for (int i = 0; i < height; i++) {
-            for (int j = 1; j < height ; j++) {
+            for (int j = 1; j < width ; j++) {
                 grid[i][j] = tempUniverse.grid[i][j];
             }
         }
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return grid.length;
     }
 
     public void blinker() {

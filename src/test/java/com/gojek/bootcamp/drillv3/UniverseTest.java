@@ -140,4 +140,11 @@ public class UniverseTest {
         world.nextGeneration();
         assertThat(world.viewGrid(), equalTo("00000\n00100\n00100\n00100\n00000\n"));
     }
+
+    @Test
+    public void UniverseObjectWithSameSizeShoudEqual(){
+        Universe world1 = new Universe(5,5);
+        Universe world2 = new Universe(5,5);
+        assertThat(world1.equals(world2), equalTo(true));
+    }
 }
