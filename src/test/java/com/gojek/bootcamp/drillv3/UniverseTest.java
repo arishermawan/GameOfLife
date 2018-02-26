@@ -36,6 +36,13 @@ public class UniverseTest {
     }
 
     @Test
+    public void blockShouldBeSetGridWithBlockPattern(){
+        Universe world = new Universe(5,5);
+        world.block();
+        assertThat(world.viewGrid(), equalTo("00000\n00000\n00110\n00110\n00000\n"));
+    }
+
+    @Test
     public void cellInGridShouldCountItsNeighbours(){
         Universe world = new Universe(5,5);
         world.blinker();
