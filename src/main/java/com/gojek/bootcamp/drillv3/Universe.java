@@ -70,19 +70,26 @@ public class Universe {
         return newCell;
     }
 
-    public void nextGeneration(){
+    public void nextGeneration() {
         int height = grid.length;
         int width = grid[0].length;
 
         boolean cellReachMaxWidth = false;
+        boolean cellReachMaxHeight = false;
         int newWidth = width;
+        int newHeigth = height;
         for (int i = 0; i < height; i++) {
-            if(grid[i][width-2] == 1 ) cellReachMaxWidth =true;
+            if (grid[i][width - 2] == 1) cellReachMaxWidth = true;
         }
 
-        if(cellReachMaxWidth){
-            if (cellReachMaxWidth) newWidth = width +1;
-            Universe newWorld = new Universe(height, newWidth);
+        for (int i = 0; i < width; i++) {
+            if (grid[height - 2][i] == 1) cellReachMaxHeight = true;
+        }
+
+        if (cellReachMaxWidth || cellReachMaxHeight) {
+            if (cellReachMaxHeight) newHeigth = height + 1;
+            if (cellReachMaxWidth) newWidth = width + 1;
+            Universe newWorld = new Universe(newHeigth, newWidth);
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
                     newWorld.grid[i][j] = grid[i][j];
@@ -104,7 +111,7 @@ public class Universe {
         }
 
         for (int i = 0; i < height; i++) {
-            for (int j = 1; j < width ; j++) {
+            for (int j = 1; j < width; j++) {
                 grid[i][j] = tempUniverse.grid[i][j];
             }
         }

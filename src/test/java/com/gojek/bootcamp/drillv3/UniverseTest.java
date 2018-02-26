@@ -189,11 +189,21 @@ public class UniverseTest {
     }
 
     @Test
-    public void GridShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
+    public void GridWidthShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
         Universe world = new Universe(5,5);
         world.blinker();
         world.nextGeneration();
         Universe newWorld = new Universe(5,6);
+        assertThat(world.equals(newWorld), is(equalTo(true)));
+    }
+
+    @Test
+    public void gridHeigthShouldBeExpandWhenCellAliveAlmostReachWidthOfGrid(){
+        Universe world = new Universe(5,5);
+        world.blinker();
+        world.nextGeneration();
+        world.nextGeneration();
+        Universe newWorld = new Universe(6,6);
         assertThat(world.equals(newWorld), is(equalTo(true)));
     }
 }
