@@ -22,4 +22,15 @@ public class Cell {
         this.status = 1;
     }
 
+    public void evolve(int neighbours){
+        if(status == 1){
+            if (neighbours >= 2 && neighbours <= 3 ){
+                this.status = 1 ;
+            }else{
+                this.status = 0;
+            }
+        }
+
+    }
+
 }

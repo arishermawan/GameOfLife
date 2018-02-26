@@ -20,4 +20,22 @@ public class CellTest {
         assertThat(cell.isAlive(), is(equalTo(true)));
     }
 
+    @Test
+    public void aliveCellWithLessThanTwoNeighboursShouldBeDeadInNextGeneration(){
+        Cell cell = new Cell();
+        cell.reviveCell();
+        int neightbours = 1;
+        cell.evolve(neightbours);
+        assertThat(cell.isAlive(), equalTo(false));
+    }
+
+    @Test
+    public void aliveCellWithBetweenTwoAndThreeNeighboursShouldBeAliveInNextGeneration(){
+        Cell cell = new Cell();
+        cell.reviveCell();
+        int neightbours = 2;
+        cell.evolve(neightbours);
+        assertThat(cell.isAlive(), equalTo(true));
+    }
+
 }
