@@ -23,16 +23,13 @@ public class Cell {
     }
 
     public void evolve(int neighbours){
-        if(status == 1){
-            if (neighbours >= 2 && neighbours <= 3 ){
-                this.status = 1 ;
-            }else{
-                this.status = 0;
-            }
+        int newCell = 0;
+        if (status == 1){
+            if (neighbours >= 2 && neighbours <=3) newCell = 1;
         }else{
-            if (neighbours == 3) this.status = 1 ;
+            if(neighbours == 3) newCell = 1;
         }
-
+        this.status = newCell;
     }
 
 }
