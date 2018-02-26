@@ -175,9 +175,16 @@ public class UniverseTest {
     }
 
     @Test
-    public void UniverseObjectWithDifferentWidthSizeShoudHaveDifferentHashcoe(){
+    public void UniverseObjectWithDifferentSizeShoudHaveDifferentHashcode(){
         Universe world1 = new Universe(5,4);
         Universe world2 = new Universe(5,5);
         assertThat(world1.hashCode(), not(equalTo((world2.hashCode()))));
+    }
+
+    @Test
+    public void UniverseObjectWithSameSizeShoudHaveSameHashcode(){
+        Universe world1 = new Universe(5,5);
+        Universe world2 = new Universe(5,5);
+        assertThat(world1.hashCode(), is(equalTo((world2.hashCode()))));
     }
 }

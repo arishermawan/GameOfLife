@@ -83,7 +83,8 @@ public class Universe {
 
     @Override
     public int hashCode() {
-        return grid.length * grid[0].length;
+        int prime = 31;
+        return prime * grid.length * grid[0].length;
     }
 
     public void blinker() {
