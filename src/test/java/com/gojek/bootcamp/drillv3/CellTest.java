@@ -23,10 +23,11 @@ public class CellTest {
     @Test
     public void aliveCellWithLessThanTwoNeighboursShouldBeDeadInNextGeneration(){
         Cell cell = new Cell();
+        Cell deadCell = new Cell();
         cell.reviveCell();
         int neightbours = 1;
-        cell.evolve(neightbours);
-        assertThat(cell.isAlive(), equalTo(false));
+        Cell newCell = cell.evolve(neightbours);
+        assertThat(newCell.isAlive(), equalTo(deadCell.isAlive()));
     }
 
     @Test
@@ -34,26 +35,28 @@ public class CellTest {
         Cell cell = new Cell();
         cell.reviveCell();
         int neightbours = 2;
-        cell.evolve(neightbours);
-        assertThat(cell.isAlive(), equalTo(true));
+        Cell newCell = cell.evolve(neightbours);
+        assertThat(cell.isAlive(), equalTo(newCell.isAlive()));
     }
 
     @Test
     public void aliveCellGreaterThanThreeNeighboursShouldBeDeadInNextGeneration(){
         Cell cell = new Cell();
+        Cell deadCell = new Cell();
         cell.reviveCell();
         int neightbours = 4;
-        cell.evolve(neightbours);
-        assertThat(cell.isAlive(), equalTo(false));
+        Cell newCell = cell.evolve(neightbours);
+        assertThat(deadCell.isAlive(), equalTo(newCell.isAlive()));
     }
 
     @Test
     public void deadCellWithThreeNeighboursShouldBeAliveInNextGeneration(){
         Cell cell = new Cell();
+        Cell aliveCell = new Cell();
+        aliveCell.reviveCell();
         int neightbours = 3;
-        cell.evolve(neightbours);
-        assertThat(cell.isAlive(), equalTo(true));
-        assertThat(cell.isAlive(), equalTo(true));
+        Cell newCell = cell.evolve(neightbours);
+        assertThat(aliveCell.isAlive(), equalTo(newCell.isAlive()));
     }
 
 }

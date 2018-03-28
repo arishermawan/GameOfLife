@@ -92,48 +92,6 @@ public class UniverseTest {
     }
 
     @Test
-    public void aliveCellWithLessThanTwoNeighboursShouldBeDeadInNextGeneration(){
-        Universe world = new Universe(5,5);
-        world.blinker();
-        int cell = 1;
-        int neightbours = world.countNeighbours(2,1);
-        int newCell = world.rules(cell, neightbours);
-        assertThat(newCell, equalTo(0));
-    }
-
-    @Test
-    public void aliveCellWithBetweenTwoAndThreeNeighboursShouldBeAliveInNextGeneration(){
-        Universe world = new Universe(5,5);
-        world.blinker();
-        int cell = 1;
-        int neightbours = world.countNeighbours(2,2);
-        int newCell = world.rules(cell, neightbours);
-        assertThat(newCell, equalTo(1));
-    }
-
-    @Test
-    public void aliveCellGreaterThanThreeNeighboursShouldBeDeadInNextGeneration(){
-        Universe world = new Universe(5,5);
-        world.block();
-        world.blinker();
-        int cell = 1;
-        int neightbours = world.countNeighbours(2,2);
-        int newCell = world.rules(cell, neightbours);
-        assertThat(newCell, equalTo(0));
-    }
-
-    @Test
-    public void deadCellWithThreeNeighboursShouldBeAliveInNextGeneration(){
-        Universe world = new Universe(6,6);
-        world.block();
-        world.blinker();
-        int cell = 0;
-        int neightbours = world.countNeighbours(3,1);
-        int newCell = world.rules(cell, neightbours);
-        assertThat(newCell, equalTo(1));
-    }
-
-    @Test
     public void blickerShouldBeRotate90DeegreWhenGeneration(){
         Universe world = new Universe(5,5);
         world.blinker();

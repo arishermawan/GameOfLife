@@ -22,14 +22,20 @@ public class Cell {
         this.status = 1;
     }
 
-    public void evolve(int neighbours){
+    public Cell evolve(int neighbours){
         int newCell = 0;
         if (status == 1){
             if (neighbours >= 2 && neighbours <=3) newCell = 1;
         }else{
             if(neighbours == 3) newCell = 1;
         }
-        this.status = newCell;
+        Cell cell = new Cell();
+        if (newCell == 1){
+            cell.reviveCell();
+            return cell;
+        }else{
+            return cell;
+        }
     }
 
 }
