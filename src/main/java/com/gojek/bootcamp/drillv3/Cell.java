@@ -4,36 +4,37 @@ package com.gojek.bootcamp.drillv3;
  */
 
 public class Cell {
-    private int status;
 
+    private int status;
+T
     public Cell() {
         this.status = 0;
     }
 
     public boolean isAlive() {
-        if(status == 1){
+        if (status == 1) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void reviveCell(){
+    public void revive() {
         this.status = 1;
     }
 
-    public Cell evolve(int neighbours){
+    public Cell evolve(int neighbours) {
         int newCell = 0;
-        if (status == 1){
-            if (neighbours >= 2 && neighbours <=3) newCell = 1;
-        }else{
-            if(neighbours == 3) newCell = 1;
+        if (status == 1) {
+            if (neighbours >= 2 && neighbours <= 3) newCell = 1;
+        } else {
+            if (neighbours == 3) newCell = 1;
         }
         Cell cell = new Cell();
-        if (newCell == 1){
-            cell.reviveCell();
+        if (newCell == 1) {
+            cell.revive();
             return cell;
-        }else{
+        } else {
             return cell;
         }
     }
