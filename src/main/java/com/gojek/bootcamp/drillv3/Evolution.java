@@ -1,5 +1,9 @@
 package com.gojek.bootcamp.drillv3;
 
+/*
+* Handle re-generation of population based on neighbours quantity
+ */
+
 public class Evolution {
 
     private Cell[][] grid;
@@ -9,26 +13,34 @@ public class Evolution {
     }
 
     public int countNeighbours(int height, int width) {
-        int neighbours = 0;
-            int[][] cellNeighbours = { {0,1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}, {1,-1}, {1,0}, {1,1} };
-            for (int[] cellNeighbour : cellNeighbours) {
-                int newHeight = height + cellNeighbour[0];
-                int newWidth = width + cellNeighbour[1];
-                if (isValidPoint(newHeight, newWidth)){
-                    if (grid[newHeight][newWidth].isAlive()) neighbours += 1;
+        int totalNeighbours = 0;
+            int[][] neighboursLocation = { {0,1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}, {1,-1}, {1,0}, {1,1} };
+            for (int[] neighbour : neighboursLocation) {
+                int positionX = height + neighbour[0];
+                int positionY = width + neighbour[1];
+                if (isValidAndAliveCell(positionX, positionY)) {
+                     totalNeighbours += 1;
                 }
             }
-        return neighbours;
+        return totalNeighbours;
     }
 
-    private boolean isValidPoint(int newHeight, int newWidth) {
+    private boolean isValidAndAliveCell(int newHeight, int newWidth) {
+        return isValidCell(newHeight, newWidth) && isAliveCell(grid[newHeight][newWidth]);
+    }
+
+    private boolean isAliveCell(Cell cell) {
+        return cell.isAlive();
+    }
+
+    private boolean isValidCell(int newHeight, int newWidth) {
         return newHeight > 0 && newHeight < grid.length - 1 && newWidth > 0 && newWidth < grid[0].length - 1;
     }
 
     private boolean isCellReachMaxWidth() {
         boolean cellAlmostReachMaxWidth = false;
         for (Cell[] cell : grid) {
-            if (cell[grid[0].length - 1].isAlive()) cellAlmostReachMaxWidth = true;
+            if (isAliveCell(cell[grid[0].length - 1])) cellAlmostReachMaxWidth = true;
         }
         return cellAlmostReachMaxWidth;
     }
@@ -36,7 +48,7 @@ public class Evolution {
     private boolean isCellReachMaxHeight() {
         boolean cellAlmostReachMaxHeight = false;
         for (int i = 0; i < grid[0].length; i++) {
-            if (grid[grid.length - 1][i].isAlive()) cellAlmostReachMaxHeight = true;
+            if (isAliveCell(grid[grid.length - 1][i])) cellAlmostReachMaxHeight = true;
         }
         return cellAlmostReachMaxHeight;
     }

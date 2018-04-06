@@ -6,7 +6,6 @@ package com.gojek.bootcamp.drillv3;
 public class Cell {
 
     private int status;
-T
     public Cell() {
         this.status = 0;
     }
